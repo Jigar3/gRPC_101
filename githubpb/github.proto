@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package github;
+option go_package = "githubp";
+
+message FollowerRequest {
+    string github_username = 1;
+}
+
+message FollowerResponse {
+    repeated string follower_list = 1;
+}
+
+service GithubService {
+    rpc GetFollowers(FollowerRequest) returns (FollowerResponse) {};
+}
+
+// protoc -I calculatorpb/ --go_out=plugins=grpc:calculatorpb/ calculatorpb/calculator.proto
+// protoc -I githubpb/ --go_out=plugins=grpc:githubpb/ githubpb/github.proto
+
+// python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. calculator.proto
+// python -m grpc_tools.protoc -I. --python_out=githubpb --grpc_python_out=githubpb githubpb/github.proto
