@@ -3,7 +3,10 @@
 Understanding gRPC
 
 To install the dependencies, do
-`go mod tidy`
+```
+go mod tidy
+pip install grpcio
+```
 
 To run server and client, do the following:
 ```
